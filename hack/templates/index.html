@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="h-[70vh] mt-20 flex flex-cols justify-center items-center">
+
+    <div class="absolute h-[400px] w-[400px] rounded-full border-8 border-[#cdb891] "></div>
+<div class="absolute h-[490px] w-[490px] rounded-full border-4 border-[#c3b091] border-dashed animate-spin"></div>
+
+    <h1 class="absolute  text-[15vw] font-bold text-[#C8AD7F]  " style="font-family: 'Tilt Warp', cursive;">Zen Stride</h1>
+    
+
+    <img src="{{url_for('static', filename='hero.png')}}"
+        class="absolute h-[30vw] rotate-[17deg]">
+
+
+</div>
+{% endblock content %}

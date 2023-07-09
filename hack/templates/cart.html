@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  /* Custom scrollbar styles */
+  .cart-container::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .cart-container::-webkit-scrollbar-track {
+    background-color: rgb(205, 184, 145);
+  }
+
+  .cart-container::-webkit-scrollbar-thumb {
+    background-color: #a18167;
+    border-radius: 4px;
+  }
+</style>
+
+<div class="flex justify-center items-center h-screen">
+  <div class="w-1/2 mx-auto bg-[#cdb891] p-8 rounded-lg shadow-md cart-container" style="max-height: 80vh; overflow-y: auto;">
+    <h1 class="text-3xl font-bold mb-8">Checkout</h1>
+
+    <div class="mb-6">
+      <h2 class="text-2xl mb-2">Your Cart</h2>
+      <ul>
+        {% for i in user_products %}
+        {% for prod in products %}
+          {% if prod.id == i.product_id %}
+          <li class="flex items-center mb-2">
+            <img src="{{url_for('static', filename=prod.image.replace('/static/', ''))}}" alt="{{i.name}}" class="w-32 h-32 p-4  mr-4">
+            <h1>{{prod.name}} - Rs. <h1>{{prod.price}}</h1></h1>
+            <div class="ml-auto flex items-center">
+              <a href="/decrease_qty/{{current_user.id}}/{{prod.id}}" class="mr-2"><ion-icon name="remove-circle-outline" class="h-8 w-8"></ion-icon></a>
+              <span class="px-2 text-xl mb-2">{{i.qty}}</span>
+              <a href="/increase_qty/{{current_user.id}}/{{prod.id}}" class="ml-2"><ion-icon name="add-circle-outline" class="h-8 w-8"></ion-icon></a>
+            </div>
+          </li>
+          {% endif %}
+        {% endfor %}
+        {% endfor %}
+        <hr class="h-[3px] bg-[#a18167] border-none" />
+      </ul>
+    </div>
+
+    <div class="mb-6">
+      <h2 class="text-2xl mb-2">Total Amount</h2>
+      <p class="text-xl font-bold">Rs. {{total}}</p>
+    </div>
+
+    {% if total > 0 %}
+    <div class="flex justify-center mt-8">
+      <form method="post" action="/thankyou" class="flex align-center justify-center">
+        <script
+          src="https://checkout.stripe.com/checkout.js"
+          class="stripe-button"
+          data-key="{{ key }}"
+          data-description="Pay to ZenStride"
+          data-amount="{{total*100}}"
+          data-locale="auto"
+          data-currency="inr"
+          data-label="Check out"
+        >
+        </script>
+      </form>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}

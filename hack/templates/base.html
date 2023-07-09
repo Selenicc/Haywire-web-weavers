@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap" rel="stylesheet">
+    <title>ZenStride</title>
+    <script>
+        if(/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        // If user agent matches mobile devices
+        window.location.href = "mobile.html";
+    } 
+    
+    </script>
+    <script src="https://kit.fontawesome.com/c416e79406.js" crossorigin="anonymous"></script>
+  
+
+</head>
+<!--<button id="open-card-button" class="text-3xl mr-10 ">Menu</i></button>-->
+<body class=" bg-[#faf0e6] text-[#a18167]" style="font-family: 'Tilt Warp', cursive;">
+    
+   <div class="h-12 ">
+    
+<nav class="    w-full flex relative justify-between items-center mx-auto px-8 h-20">
+    <!-- logo -->
+    <div class="inline-flex text-3xl">
+        <a class="" href="/"
+            >ZenStride
+        </a>
+    </div>
+
+    <!-- end logo -->
+
+    <!-- search bar -->
+    <div class="hidden sm:block flex-shrink flex-grow-0 justify-start px-2">
+        <div class="inline-block">
+            <div class="inline-flex items-center max-w-full">
+                <form method="post" action="/sendsearch">
+                    {{searchform.csrf_token}}
+                    {{searchform.hidden_tag()}}
+                <button class="flex items-center flex-grow-0 flex-shrink pl-2 relative w-60 border border-[#a18167] rounded-full px-1  py-1 border-2 transition-all 2s" type="button">
+                    {{searchform.query(class='block flex-grow flex-shrink overflow-hidden bg-[#faf0e6] rounded-full h-full w-60 p-1 focus:outline-none', placeholder="Search")}}
+                    <div class="flex items-center justify-center relative  h-8 w-8 rounded-full">
+                        <svg
+                            viewBox="0 0 32 32"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                            role="presentation"
+                            focusable="false"
+                            style="
+                                display: block;
+                                fill: none;
+                                height: 12px;
+                                width: 12px;
+                                stroke: currentcolor;
+                                stroke-width: 5.33333;
+                                overflow: visible;
+                            "
+                        >
+                            <g fill="none">
+                                <path
+                                    d="m13 24c6.0751322 0 11-4.9248678 11-11 0-6.07513225-4.9248678-11-11-11-6.07513225 0-11 4.92486775-11 11 0 6.0751322 4.92486775 11 11 11zm8-3 9 9"
+                                ></path>
+                            </g>
+                        </svg>
+                    </div>
+                </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- end search bar -->
+
+    <!-- login -->
+    <div class="flex-initial">
+      <div class="flex justify-end items-center relative">
+       
+        <div class="flex mr-4 items-center">
+         
+          <div class="block relative">
+            <a href="/cart" class="inline-block py-2 px-3 rounded-full relative hover:shadow-lg transition-all 2s">
+              <div class="flex items-center h-5">
+                <ion-icon name="cart-outline" class="h-8 w-8"></ion-icon>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="block">
+            <div class="inline relative">
+                <button type="button"  id="open-card-button" class="inline-flex items-center relative px-2 border rounded-full hover:shadow-lg transition-all 2s">
+                    <div class="pl-1">
+                        <svg
+                            viewBox="0 0 32 32"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                            role="presentation"
+                            focusable="false"
+                            style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 3; overflow: visible;"
+                        >
+                            <g fill="none" fill-rule="nonzero">
+                                <path d="m2 16h28"></path>
+                                <path d="m2 24h28"></path>
+                                <path d="m2 8h28"></path>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="block flex-grow-0 flex-shrink-0 h-10 w-12 pl-5">
+                        <svg
+                            viewBox="0 0 32 32"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                            role="presentation"
+                            focusable="false"
+                            style="display: block; height: 100%; width: 100%; fill: currentcolor;"
+                        >
+                            <path d="m16 .7c-8.437 0-15.3 6.863-15.3 15.3s6.863 15.3 15.3 15.3 15.3-6.863 15.3-15.3-6.863-15.3-15.3-15.3zm0 28c-4.021 0-7.605-1.884-9.933-4.81a12.425 12.425 0 0 1 6.451-4.4 6.507 6.507 0 0 1 -3.018-5.49c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5a6.513 6.513 0 0 1 -3.019 5.491 12.42 12.42 0 0 1 6.452 4.4c-2.328 2.925-5.912 4.809-9.933 4.809z"></path>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- end login -->
+</nav>
+   </div>
+    
+   <div id="card"
+   class=" absolute z-10 hidden fixed top-0 left-0 w-full h-full flex items-center justify-center  bg-[#faf0e6]">
+    <div class="h-[80vh] grid grid-rows text-center w-full mx-10">
+       <a href="/">
+           <h1 class="lg:text-9xl text-6xl hover:bg-[#C8AD7F] hover:text-[#faf0e6]">Home</h1>
+       </a>
+        <a href="/explore">
+           <h1 class="lg:text-9xl text-6xl hover:bg-[#C8AD7F] hover:text-[#faf0e6]">Explore</h1>
+       </a>
+        {% if not current_user.is_authenticated %}
+        <a href="/login">
+            <h1 class="lg:text-9xl text-6xl hover:bg-[#C8AD7F] hover:text-[#faf0e6]">Login</h1>
+        </a>
+         <a href="/reg">
+            <h1 class="lg:text-9xl text-6xl hover:bg-[#C8AD7F] hover:text-[#faf0e6]">Signup</h1>
+        </a>
+        {% else %}
+        <a href="/logout">
+            <h1 class="lg:text-9xl text-6xl hover:bg-[#C8AD7F] hover:text-[#faf0e6]">Sign out</h1>
+        </a>
+        {% endif %}
+
+    </div>
+</div>
+    {% block content %}
+        
+    {% endblock content %}
+    <script>
+        const openCardButton = document.getElementById('open-card-button');
+        const card = document.getElementById('card');
+
+        openCardButton.addEventListener('click', () => {
+            card.classList.remove('hidden');
+        });
+
+        card.addEventListener('click', (event) => {
+            if (event.target === card) {
+                card.classList.add('hidden');
+            }
+        });
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    </body>
+</html>
+

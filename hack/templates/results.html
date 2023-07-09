@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+     {% if results | length > 0 %}
+     <main class="container mx-auto p-4 mt-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+     {% for i in results %}
+     <div class="rounded-lg shadow-md p-4" style="background-color: #cdb891;">
+       <a href="/products/{{i.id}}">
+         <img src="{{url_for('static', filename=i.image.replace('/static/', ''))}}" alt="{{i.name}}" class="w-64 h-auto mb-4 ml-auto mr-auto">
+         <h2 class="text-xl font-bold mb-2 cursor-pointer">{{i.name}}</h2>
+       </a>
+       <p class="text-gray-700 mb-4">{{i.category}}</p>
+       <p class="text-gray-900 font-medium">Rs. {{i.price}}.00</p>
+       <a href="/addtocart/{{i.id}}"><button type="button" class="h-10 w-40 bg-[#a18167] mt-5 rounded-full text-white text-xl">Add to Cart</button></a>
+     </div>
+     {% endfor %}
+    </main>
+     {% else %}
+     <h1 class="text-center mt-32 text-4xl">No results found.</h1>
+     {% endif %}
+ 
+{% endblock content %}

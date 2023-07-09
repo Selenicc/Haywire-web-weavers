@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+<br><br><br>
+<div class="container mx-auto p-4">
+    <div class="rounded-lg">
+        <div class="flex">
+            <div class="w-1/2 p-4">
+                <img src="{{url_for('static', filename=prod.image.replace('/static/', ''))}}" alt="Product Image" class="w-full rounded-lg rotate-[17deg]">
+            </div>
+            <div class="w-1/2 p-4">
+                <h1 class="text-4xl font-bold mb-2">{{prod.name}}</h1>
+                <p class="mb-4">{{prod.category}}</p>
+                <div class="flex items-center mb-4">
+                    <span class="text-2xl font-medium mr-2">Rs. {{prod.price}}</span><br>
+                    <span class="text-sm">In Stock</span>
+                </div>
+                <a href="/addtocart/{{prod.id}}">
+                    <button type="button" class="h-10 w-40 bg-[#a18167] mt-5 rounded-full text-white text-xl">Add to Cart</button>
+                </a>
+                <div class="mt-8">
+                    <h2 class="text-xl font-bold mb-2">Offers</h2>
+                    <ul>
+                        <li class="mb-4">
+                            <ion-icon name="checkmark-circle-outline" class="text-green-500 align-middle mr-2 w-8 h-8"></ion-icon>
+                            Free delivery
+                        </li>
+                        <li class="mb-4">
+                            <ion-icon name="cash-outline" class="text-green-500 align-middle mr-2 w-8 h-8"></ion-icon>
+                            30-day money-back guarantee
+                        </li>
+                        <li class="mb-4">
+                            <ion-icon name="chatbubble-outline" class="text-green-500 align-middle mr-2 w-8 h-8"></ion-icon>
+                            24/7 customer support
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mx-auto p-4 mt-8">
+  <h2 class="text-2xl font-bold mb-4">Suggested Products</h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <!-- Replace the following code with your suggested product cards or elements -->
+      {% for i in prods[:4] %}
+      <div class="rounded-lg shadow-md p-4" style="background-color: #cdb891;">
+        <a href="/products/{{i.id}}">
+          <img src="{{url_for('static', filename=i.image.replace('/static/', ''))}}" alt="{{i.name}}" class="w-64 h-auto mb-4 ml-auto mr-auto">
+          <h2 class="text-xl font-bold mb-2 cursor-pointer">{{i.name}}</h2>
+        </a>
+        <p class="text-gray-700 mb-4">{{i.category}}</p>
+        <p class="text-gray-900 font-medium">Rs. {{i.price}}.00</p>
+        <a href="/addtocart/{{i.id}}"><button type="button" class="h-10 w-40 bg-[#a18167] mt-5 rounded-full text-white text-xl">Add to Cart</button></a>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+{% endblock content %}
